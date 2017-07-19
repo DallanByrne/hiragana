@@ -1,0 +1,55 @@
+/*
+ * *****************************************************************************
+ * MDAL Framework (C) 2015 - Lorenzo Bruni
+ * *****************************************************************************
+ */
+
+function GetElementById(pElementId) {
+	if(document.getElementById(pElementId)) 
+		return document.getElementById(pElementId);
+	else
+        return false;
+}
+
+function GetElementByName(pElementName, $pIndex) {
+	if(document.getElementsByName(pElementName)[$pIndex])
+		return document.getElementsByName(pElementName)[$pIndex];
+	else
+        return false;
+}
+
+function SubmitForm() {
+    var vElement = GetElementById('PARAM_JAVASCRIPT');
+	vElement.value = 'submit';
+	vElement.form.submit();
+}
+
+function SubmitPagination(pElementId, pValue) {
+    var vElement = GetElementById(pElementId);
+    // Set Pagination
+	vElement.value = pValue;
+    // Submit Form
+    SubmitForm();
+}
+
+function SubmitSorting(pColumnId, pColumnValue, pSortId, pSortValue) {
+    var vColumn = GetElementById(pColumnId);
+    var vSort = GetElementById(pSortId);
+    // Set Values
+	vColumn.value = pColumnValue;
+	vSort.value = pSortValue;
+    // Submit Form
+    SubmitForm();
+}
+
+function ClearField(pField) {
+	if (pField.defaultValue == pField.value) pField.value = '';
+	else if (pField.value == '') pField.value = pField.defaultValue;
+}
+
+function FocusAndSelect(pElementId) {
+    var vField = GetElementById(pElementId);
+    
+    vField.focus();
+    vField.select();
+}
